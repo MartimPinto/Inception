@@ -1,5 +1,8 @@
-FROM debian:buster
+FROM debian:bullseye
 
-RUN apt-get upgrade && apt-get update -y && apt-get install -y php-fpm
+RUN apt-get upgrade && apt-get update -y && apt-get -y install wget \
+	&& apt-get install -y php7.3 php-fpm php-mysql mariadb-client
 
-CMD ["php-fpm8.2", "-F"]
+
+
+EXPOSE 9000
