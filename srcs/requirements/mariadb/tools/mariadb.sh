@@ -1,10 +1,5 @@
 #!/bin/bash
 
-DB_NAME="inception_db"
-DB_USER="mcarneir"
-DB_PASS="trains123"
-DB_ROOT_PASS="42trains123"
-
 mysql_install_db --user=mysql --ldata=/var/lib/mysql
 
 mysqld_safe &
@@ -29,4 +24,4 @@ fi
 
 service mariadb stop
 
-exec "$@"
+/usr/bin/mysqld_safe

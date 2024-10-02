@@ -1,20 +1,4 @@
 services:
-  nginx:
-    build: 
-      context: ./requirements/nginx/.
-    container_name: nginx
-    ports:
-      - '443:443'
-    volumes:
-      - wordpress_files:/var/www/inception/
-    networks:
-      - all
-    init: true
-    restart: on-failure
-    env_file:
-      - .env
-    depends_on:
-      - wordpress
   mariadb:
     build:
       context: ./requirements/mariadb/.
@@ -40,6 +24,22 @@ services:
       - .env
     depends_on:
       - mariadb
+  nginx:
+    build: 
+      context: ./requirements/nginx/.
+    container_name: nginx
+    ports:
+      - '443:443'
+    volumes:
+      - wordpress_files:/var/www/inception/
+    networks:
+      - all
+    init: true
+    restart: on-failure
+    env_file:
+      - .env
+    depends_on:
+      - wordpress
 
 volumes:
   database:

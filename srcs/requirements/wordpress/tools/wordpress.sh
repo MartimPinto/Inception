@@ -1,14 +1,5 @@
 #!/bin/bash
 
-DB_NAME="inception_db"
-DB_USER="mcarneir"
-DB_PASS="trains123"
-DB_ROOT_PASS="42trains123"
-WP_TITLE="webtitle"
-WP_ADMIN_USR="mcarneirpriv"
-WP_ADMIN_PWD="privtrains"
-WP_ADMIN_EMAIL="mcarneir@student.42porto.com"
-WP_URL="http://localhost"
 
 # Fix permissions
 chown -R www-data:www-data /var/www/*
@@ -50,4 +41,4 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 fi
 
 # Execute the CMD passed to the container (PHP-FPM)
-exec "$@"
+/usr/sbin/php-fpm7.4 -F
