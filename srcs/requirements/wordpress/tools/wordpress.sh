@@ -24,7 +24,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     chmod +x wp-cli.phar
     mv wp-cli.phar /usr/local/bin/wp
 
-    while ! mysqldadmin ping -hmariadb --silent; download
+    while ! mysqldadmin ping -hmariadb --silent; do
             echo "Waiting for MariaDb to be ready..."
             sleep 2
     done
