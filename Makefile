@@ -2,7 +2,7 @@ NAME = inception
 SRCS = ./srcs
 COMPOSE = $(SRCS)/docker-compose.yml
 HOST_URL = mcarneir.42.fr
-DATA_DIR = /home/mcarneir/data
+DATA_DIR = /home/mcarneir/data/
 
 all: conf up
 
