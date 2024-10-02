@@ -24,4 +24,4 @@ fi
 
 service mariadb stop
 
-/usr/bin/mysqld_safe
+exec "$@"
