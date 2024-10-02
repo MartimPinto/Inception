@@ -47,13 +47,13 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ~/data/database
+      device: /home/mcarneir/data/mariadb_volume
   wordpress_files:
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: ~/data/wordpress_files
+      device: /home/mcarneir/data/wordpress_volume
 
 networks:
   all:
