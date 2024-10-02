@@ -36,4 +36,4 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     echo "Wordpress: installation complete!"
 fi
 
-/usr/sbin/php-fpm7.4 -F
+exec "$@"
