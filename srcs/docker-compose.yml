@@ -4,7 +4,7 @@ services:
       context: ./requirements/mariadb/.
     container_name: mariadb
     volumes:
-      - database:/var/lib/mysql/
+      - database:/var/lib/mysql
     networks:
       - inception
     init: true
@@ -16,7 +16,7 @@ services:
       context: ./requirements/wordpress/.
     container_name: wordpress
     volumes:
-      - wordpress_files:/var/www/html/
+      - wordpress_files:/var/www/html
     networks:
       - inception
     init: true
@@ -31,7 +31,7 @@ services:
     ports:
       - '443:443'
     volumes:
-      - wordpress_files:/var/www/html/
+      - wordpress_files:/var/www/html
     networks:
       - inception
     init: true
