@@ -25,6 +25,7 @@ stop:
 clean_images:
 	@echo "Removing images...\n"
 	sudo docker rmi -f $(sudo docker images -q) || true
+	sudo docker builder prune -f
 
 clean: down clean_images
 
