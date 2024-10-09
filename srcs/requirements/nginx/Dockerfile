@@ -15,6 +15,8 @@ RUN mkdir -p /var/run/nginx
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 RUN chmod -R 755 /var/www/html
+RUN find /var/www/html -type d -exec chmod 755 {} \;
+RUN find /var/www/html -type f -exec chmod 644 {} \;
 
 RUN chown -R www-data:www-data /var/www/html
 
