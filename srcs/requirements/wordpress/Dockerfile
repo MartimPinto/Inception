@@ -12,6 +12,9 @@ RUN apt-get upgrade && apt-get update -y && apt-get -y install \
 	mariadb-client \
 	&& rm -rf /var/lib/apt/lists/*
 
+RUN	chown -R www-data:www-data /var/www/html
+RUN chmod -R 755 /var/www/html
+
 COPY conf/www.conf ${PHPPATH}/pool.d/
 
 COPY tools/wordpress.sh /usr/local/bin/
