@@ -12,6 +12,9 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     echo "Wordpress: setting up..."
 
     mkdir -p /var/www/html
+    chown -R www-data:www-data /var/www/html
+    chmod -R 755 /var/www/html
+
     cd /var/www/html
     rm -rf *
 
