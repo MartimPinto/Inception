@@ -12,9 +12,6 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     echo "Wordpress: setting up..."
 
     mkdir -p /var/www/html
-    chown -R www-data:www-data /var/www/html
-    chmod -R 755 /var/www/html
-
     cd /var/www/html
     rm -rf *
 
@@ -26,15 +23,16 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 
     chmod +x wp-cli.phar
     mv wp-cli.phar /usr/local/bin/wp
+    wp core download --allow-root
 
     while ! mysqladmin ping -hmariadb --silent; do
             echo "Waiting for MariaDb to be ready..."
             sleep 2
     done
 
-    wp core download --allow-root
     wp config create --allow-root --dbname=$DB_NAME --dbuser=$DB_USER --dbpass=$DB_PASS --dbhost=mariadb:3306
     wp core install --url=$WP_URL --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
+    wp user create $DB_USER martimnp@gmail.com --role=subscriber --user_pass=$DB_PWD --allow-root
 
     echo "Wordpress: installation complete!"
 fi
