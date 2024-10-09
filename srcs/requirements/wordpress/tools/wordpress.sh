@@ -6,7 +6,7 @@ chmod -R 755 /var/www/html
 mkdir -p /run/php/
 touch /run/php/php7.4-fpm.pid
 
-sed -i "s/listen = \/run\/php\/php7.4-fpm.sock/listen = 9000/" "/etc/php/7.4/fpm/pool.d/www.conf"
+sed -i "s/listen = \/run\/php\/php7.4-fpm.sock/listen = 9000/" /etc/php/7.4/fpm/pool.d/www.conf
 
 if [ ! -f /var/www/html/wp-config.php ]; then
     echo "Wordpress: setting up..."
