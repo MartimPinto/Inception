@@ -14,7 +14,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PASS';
 FLUSH PRIVILEGES;
 EOF
 
-mysql -uroot </tmp/db.sql
+mysql -uroot -p"$DB_ROOT_PASS" < /tmp/db.sql
 if [ $? -eq 0 ]; then
 	echo "SQL script executed successfully."
 else
