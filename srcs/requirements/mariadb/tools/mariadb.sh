@@ -29,5 +29,6 @@ else
     exit 1
 fi
 
+service mariadb stop 
 # Run the command passed as arguments to the script
 exec "$@"
