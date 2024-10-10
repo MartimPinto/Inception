@@ -20,7 +20,7 @@ until mysqladmin ping --silent; do
 done
 
 # Execute the SQL script
-mysql -uroot -p"$DB_ROOT_PASS" < /tmp/db.sql
+mysql -uroot </tmp/db.sql
 if [ $? -eq 0 ]; then
     echo "SQL script executed successfully."
 else
@@ -28,8 +28,6 @@ else
     exit 1
 fi
 
-# Stop MariaDB
-service mariadb stop
 
 # Run the command passed as arguments to the script
 exec "$@"
