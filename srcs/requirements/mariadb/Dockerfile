@@ -25,10 +25,9 @@ RUN mkdir -p /run/mysqld \
 COPY conf/50-server.cnf /etc/mysql/mariadb.conf.d/
 COPY tools/mariadb.sh /bin/
 RUN chmod +x /bin/mariadb.sh
-RUN bash /bin/mariadb.sh
 
 
 EXPOSE 3306
 
 
-CMD ["/usr/bin/mysqld_safe"]
+CMD ["/bin/mariadb.sh", "/usr/bin/mysqld_safe"]
