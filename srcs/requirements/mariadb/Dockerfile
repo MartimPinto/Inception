@@ -1,5 +1,14 @@
 FROM debian:bullseye
 
+ARG DB_NAME
+ARG DB_USER
+ARG DB_PASS
+ARG DB_ROOT_PASS
+
+ENV DB_NAME=${DB_NAME}
+ENV DB_USER=${DB_USER}
+ENV DB_PWD=${DB_PASS}
+ENV DB_PWD_ROOT=${DB_ROOT_PASS}
 
 RUN apt-get update && apt-get upgrade -y && apt-get install -y mariadb-server \
 	&& apt-get install vim -y \

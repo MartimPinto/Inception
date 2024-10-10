@@ -30,4 +30,3 @@ fi
 
 
 # Run the command passed as arguments to the script
-exec "$@"
