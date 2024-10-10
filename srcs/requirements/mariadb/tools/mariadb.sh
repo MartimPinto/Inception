@@ -22,6 +22,6 @@ else
 	exit 1
 fi
 
-service mariadb stop
+service mysql stop
 
 exec "$@"
