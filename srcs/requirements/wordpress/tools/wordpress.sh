@@ -23,6 +23,8 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 
     chmod +x wp-cli.phar
     mv wp-cli.phar /usr/local/bin/wp
+
+    echo "Downloading Wordpress core..."
     wp core download --allow-root
 
     while ! mysqladmin ping -hmariadb --silent; do
@@ -30,8 +32,13 @@ if [ ! -f /var/www/html/wp-config.php ]; then
             sleep 2
     done
 
+    echo "Creating wp-config.php..."
     wp config create --allow-root --dbname=$DB_NAME --dbuser=$DB_USER --dbpass=$DB_PASS --dbhost=mariadb:3306
+    
+    echo "Installing Wordpress..."
     wp core install --url="https://$WP_URL" --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PASS --admin_email=$WP_ADMIN_EMAIL --skip-email --path="/var/www/html/" --allow-root
+    
+    echo "Creating subscribed user..."
     wp user create $DB_USER martimnp@gmail.com --role=subscriber --user_pass=$DB_PASS --allow-root
 
     echo "Wordpress: installation complete!"
