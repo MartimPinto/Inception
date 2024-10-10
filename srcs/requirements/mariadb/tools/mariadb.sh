@@ -4,6 +4,16 @@
 
 service mariadb start
 
+
+if [ -z "$DB_NAME" ] || [ -z "$DB_USER" ] || [ -z "$DB_PASS" ] || [ -z "$DB_ROOT_PASS" ]; then
+    echo "Error: One or more environment variables are not set."
+    echo "DB_NAME: $DB_NAME"
+    echo "DB_USER: $DB_USER"
+    echo "DB_PASS: $DB_PASS"
+    echo "DB_ROOT_PASS: $DB_ROOT_PASS"
+    exit 1
+fi
+
 mariadb -v -u root << EOF
 CREATE DATABASE IF NOT EXISTS $DB_NAME;
 CREATE USER IF NOT EXISTS '$DB_USER'@'%' IDENTIFIED BY '$DB_PASS';
