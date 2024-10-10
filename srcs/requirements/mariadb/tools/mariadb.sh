@@ -9,6 +9,7 @@ cat >/tmp/db.sql << EOF
 CREATE DATABASE IF NOT EXISTS $DB_NAME;
 CREATE USER IF NOT EXISTS '$DB_USER'@'%' IDENTIFIED BY '$DB_PASS';
 GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'%';
+GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'wordpress.inception_inception' IDENTIFIED BY '$DB_PASS';
 GRANT ALL PRIVILEGES ON $DB_NAME.* TO 'root'@'%' IDENTIFIED BY '$DB_ROOT_PASS';
 ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PASS';
 FLUSH PRIVILEGES;
@@ -29,6 +30,6 @@ else
     exit 1
 fi
 
-
+service mariadb stop
 # Run the command passed as arguments to the script
 exec "$@"
