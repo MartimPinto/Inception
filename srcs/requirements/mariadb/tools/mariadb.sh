@@ -20,7 +20,7 @@ until mysqladmin ping --silent; do
 done
 
 # Execute the SQL script
-mysql -uroot </tmp/db.sql
+mysql -uroot -p"$DB_ROOT_PASS" < /tmp/db.sql
 if [ $? -eq 0 ]; then
     echo "SQL script executed successfully."
 else
