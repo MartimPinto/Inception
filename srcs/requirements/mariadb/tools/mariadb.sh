@@ -1,5 +1,5 @@
 #!/bin/bash
-
+mysql_install_db --user=mysql --ldata=/var/lib/mysql
 # Start MariaDB in the background
 mysqld_safe &
 sleep 5  # Give MariaDB some time to fully start
