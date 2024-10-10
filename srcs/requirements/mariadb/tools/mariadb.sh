@@ -2,7 +2,7 @@
 
 mysql_install_db --user=mysql --ldata=/var/lib/mysql
 
-mysql_safe &
+mysqld_safe &
 sleep 5
 
 
