@@ -31,7 +31,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     done
 
     wp config create --allow-root --dbname=$DB_NAME --dbuser=$DB_USER --dbpass=$DB_PASS --dbhost=mariadb:3306
-    wp core install --url=$WP_URL --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PASS --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
+    wp core install --url="https://$WP_URL" --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PASS --admin_email=$WP_ADMIN_EMAIL --skip-email --path="/var/www/html/" --allow-root
     wp user create $DB_USER martimnp@gmail.com --role=subscriber --user_pass=$DB_PASS --allow-root
 
     echo "Wordpress: installation complete!"
